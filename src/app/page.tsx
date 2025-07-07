@@ -10,13 +10,14 @@ import { quotes as allQuotes } from '@/data/quotes';
 import ThemeToggle from '@/components/ThemeToggle';
 import FeedbackForm from '@/components/FeedbackForm';
 import { getDailyQuote } from '@/utils/getDailyQuote';
+import type { User } from '@supabase/supabase-js'; // ✅ Type import
 
 export default function Home() {
   const router = useRouter();
   const dailyQuote = getDailyQuote();
 
   const [results, setResults] = useState<{ text: string; author: string }[]>([]);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null); // ✅ Replaced any with proper type
   const [mood, setMood] = useState<string | null>(null);
   const [showMoodDetector, setShowMoodDetector] = useState(false);
 
